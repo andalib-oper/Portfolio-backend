@@ -25,7 +25,12 @@ const Email = mongoose.model("Email", {
 });
 
 // Body parser middleware
-app.use(bodyParser.json());
+app.use(
+  bodyParser.json(),
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'),
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'),
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  );
 
 // POST endpoint for sending and storing emails
 app.post("/send-email", async (req, res) => {
